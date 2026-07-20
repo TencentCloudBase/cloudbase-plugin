@@ -2,7 +2,11 @@
 
 CloudBase AI Plugin — MCP Server + Agent Skills for AI Coding Agents
 
-This repository is automatically synced from [TencentCloudBase/CloudBase-MCP](https://github.com/TencentCloudBase/CloudBase-MCP).
+This repository is automatically synced from [TencentCloudBase/CloudBase-MCP](https://github.com/TencentCloudBase/CloudBase-MCP)
+(`plugin/cloudbase/`, Open Plugin Spec artifacts only).
+
+Claude Code / Codex native marketplace install continues to use the main
+[CloudBase-MCP](https://github.com/TencentCloudBase/CloudBase-MCP) repository.
 
 ## Installation
 
