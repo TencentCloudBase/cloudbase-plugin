@@ -8,6 +8,26 @@ var log = createLogger();
 // Priority threshold for compaction reset (skills with priority >= 7 are re-injected after compaction)
 export var COMPACTION_REINJECT_MIN_PRIORITY = 7;
 
+// Legacy directory/id aliases after vally name===dir renames.
+export var SKILL_ID_ALIASES = {
+  "auth-nodejs": "auth-nodejs-cloudbase",
+  "auth-tool": "auth-tool-cloudbase",
+  "auth-web": "auth-web-cloudbase",
+  "auth-wechat": "auth-wechat-miniprogram",
+  "http-api": "http-api-cloudbase",
+  "no-sql-web-sdk": "cloudbase-document-database-web-sdk",
+  "no-sql-wx-mp-sdk": "cloudbase-document-database-in-wechat-miniprogram",
+  "postgresql-development": "postgresql-development-cloudbase",
+  "relational-database-tool": "relational-database-mcp-cloudbase",
+  "relational-database-web": "relational-database-web-cloudbase",
+  "cloudbase-guidelines": "cloudbase",
+};
+
+export function normalizeSkillId(skillId) {
+  if (typeof skillId !== "string" || skillId === "") return skillId;
+  return SKILL_ID_ALIASES[skillId] || skillId;
+}
+
 // --- Seen skills parsing/merging/filtering ---
 
 export function parseSeenSkills(value) {
@@ -15,7 +35,8 @@ export function parseSeenSkills(value) {
   return value
     .split(",")
     .map((s) => s.trim())
-    .filter((s) => s !== "");
+    .filter((s) => s !== "")
+    .map(normalizeSkillId);
 }
 
 export function mergeSeenSkills(...values) {

@@ -62,14 +62,14 @@ You are a CloudBase architecture specialist. Use the decision trees and matrices
 
 | 场景 | 推荐后端 | 对应工具 / Skill | RLS 支持 | 适用规模 |
 |------|---------|----------------|---------|---------|
-| 用户内容（UGC、评论、动态） | NoSQL | `no-sql-web-sdk` / `no-sql-wx-mp-sdk` | 否（应用层控制） | 中小规模 |
-| 订单 / 交易 / 财务 | MySQL | `relational-database-web` / `relational-database-tool` | 否（SQL GRANT） | 中大规模 |
-| 多租户 SaaS、按用户隔离 | PostgreSQL | `postgresql-development` | 是（RLS） | 中大规模 |
-| 商品 / SKU / 库存 | MySQL | `relational-database-tool` | 否 | 中大规模 |
-| 实时聊天 / 协作 | NoSQL + watch | `no-sql-web-sdk`（watch 能力） | 否 | 中小规模 |
-| 向量检索 / AI 知识库 | PostgreSQL（pgvector） | `postgresql-development` | 是 | 中大规模 |
+| 用户内容（UGC、评论、动态） | NoSQL | `cloudbase-document-database-web-sdk` / `cloudbase-document-database-in-wechat-miniprogram` | 否（应用层控制） | 中小规模 |
+| 订单 / 交易 / 财务 | MySQL | `relational-database-web-cloudbase` / `relational-database-mcp-cloudbase` | 否（SQL GRANT） | 中大规模 |
+| 多租户 SaaS、按用户隔离 | PostgreSQL | `postgresql-development-cloudbase` | 是（RLS） | 中大规模 |
+| 商品 / SKU / 库存 | MySQL | `relational-database-mcp-cloudbase` | 否 | 中大规模 |
+| 实时聊天 / 协作 | NoSQL + watch | `cloudbase-document-database-web-sdk`（watch 能力） | 否 | 中小规模 |
+| 向量检索 / AI 知识库 | PostgreSQL（pgvector） | `postgresql-development-cloudbase` | 是 | 中大规模 |
 | 文件 / 图片 / 视频 | Cloud Storage | `cloud-storage-web` | 否（ACL） | 任意 |
-| 配置 / 元数据 | NoSQL | `no-sql-web-sdk` | 否 | 小规模 |
+| 配置 / 元数据 | NoSQL | `cloudbase-document-database-web-sdk` | 否 | 小规模 |
 
 **选型要点：**
 - 默认从 NoSQL 起步，满足灵活 schema 和快速迭代
@@ -83,11 +83,11 @@ You are a CloudBase architecture specialist. Use the decision trees and matrices
 
 | 平台 | 认证方式 | 工具 / Skill | 关键 API |
 |------|---------|-------------|---------|
-| Web（React/Vue） | 微信扫码登录 | `auth-web` / `web-development` | `auth.toDefaultLoginPage()` |
-| Web | 匿名登录 | `auth-web` | `auth.signInAnonymously()` |
-| Web | 自定义登录 | `auth-nodejs` + `auth-web` | Cloud Function 签发 custom ticket |
-| 微信小程序 | 天然免登录 | `auth-wechat` / `miniprogram-development` | `wxContext.OPENID`（云函数内） |
-| 小程序 + 后台 | 双端打通 | `auth-wechat` + `auth-web` | 共用云函数，通过 OPENID 关联用户 |
+| Web（React/Vue） | 微信扫码登录 | `auth-web-cloudbase` / `web-development` | `auth.toDefaultLoginPage()` |
+| Web | 匿名登录 | `auth-web-cloudbase` | `auth.signInAnonymously()` |
+| Web | 自定义登录 | `auth-nodejs-cloudbase` + `auth-web-cloudbase` | Cloud Function 签发 custom ticket |
+| 微信小程序 | 天然免登录 | `auth-wechat-miniprogram` / `miniprogram-development` | `wxContext.OPENID`（云函数内） |
+| 小程序 + 后台 | 双端打通 | `auth-wechat-miniprogram` + `auth-web-cloudbase` | 共用云函数，通过 OPENID 关联用户 |
 | CloudRun | 鉴权 | `cloudbase-platform` | HTTP Header 携带 token，云函数校验 |
 
 **强制约束：**
@@ -208,7 +208,7 @@ Client（WebSocket / HTTP）
 - `⤳ skill: cloudrun-development` — CloudRun 服务、容器化、长连接
 - `⤳ skill: data-model-creation` — 数据建模、ER 图、数据库选型
 - `⤳ skill: relational-database-tool` — MySQL/PostgreSQL 设计与管理
-- `⤳ skill: auth-web` / `auth-wechat` / `auth-nodejs` — 各端认证实现
+- `⤳ skill: auth-web` / `auth-wechat-miniprogram` / `auth-nodejs-cloudbase` — 各端认证实现
 
 ---
 

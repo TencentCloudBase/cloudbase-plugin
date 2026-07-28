@@ -125,4 +125,4 @@ envQuery({ action: "domains", envId: "<current-env-id>" })
 - **list 后** → "运行 `/cloudbase-env info` 查看选定环境的详情，或运行 `/cloudbase-status` 进行健康检查。"
 - **info 后** → "根据环境后端能力，运行 `/cloudbase-deploy` 部署资源，或运行 `/cloudbase-status` 检查资源状态。"
 - **domains 后** → "如需添加安全域名，使用 `manageEnv` 工具或在控制台配置。Web 应用上线前务必添加访问域名。"
-- **鉴权失败** → "请完成 CloudBase 授权流程后重试。参考 `auth-tool` skill 获取认证指引。"
+- **鉴权失败** → "请完成 CloudBase 授权流程后重试。参考 `auth-tool-cloudbase` skill 获取认证指引。"

@@ -12,10 +12,10 @@ Use CloudBase guidance only when the current repo, prompt, or tool call makes it
 
 CloudBase has 4 scenarios — the detected scenario should guide your primary approach:
 
-- **Web** (React/Vue/Vite) → `web-development` + `auth-web` + `no-sql-web-sdk` + `cloud-storage-web`
-- **Mini Program** (WeChat) → `miniprogram-development` + `auth-wechat` + `no-sql-wx-mp-sdk`
+- **Web** (React/Vue/Vite) → `web-development` + `auth-web-cloudbase` + `cloudbase-document-database-web-sdk` + `cloud-storage-web`
+- **Mini Program** (WeChat) → `miniprogram-development` + `auth-wechat-miniprogram` + `cloudbase-document-database-in-wechat-miniprogram`
 - **CloudRun** (container/Docker) → `cloudrun-development` + `cloud-functions`
-- **Database** (schema design) → `data-model-creation` + `relational-database-tool` or `postgresql-development`
+- **Database** (schema design) → `data-model-creation` + `relational-database-mcp-cloudbase` or `postgresql-development-cloudbase`
 
 ## Mandatory first step
 

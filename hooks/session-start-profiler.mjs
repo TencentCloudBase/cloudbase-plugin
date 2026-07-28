@@ -15,28 +15,28 @@ var log = createLogger();
 
 // File markers that map to skills
 var FILE_MARKERS = [
-  { file: "project.config.json", scenario: "miniprogram", skills: ["miniprogram-development", "auth-wechat", "no-sql-wx-mp-sdk", "cloudbase-platform"] },
-  { file: "app.json", scenario: "miniprogram", skills: ["miniprogram-development", "auth-wechat", "no-sql-wx-mp-sdk", "cloudbase-platform"] },
+  { file: "project.config.json", scenario: "miniprogram", skills: ["miniprogram-development", "auth-wechat-miniprogram", "cloudbase-document-database-in-wechat-miniprogram", "cloudbase-platform"] },
+  { file: "app.json", scenario: "miniprogram", skills: ["miniprogram-development", "auth-wechat-miniprogram", "cloudbase-document-database-in-wechat-miniprogram", "cloudbase-platform"] },
   { file: "cloudbaserc.json", scenario: "web", skills: ["web-development", "cloudbase-platform"] },
   { file: "Dockerfile", scenario: "cloudrun", skills: ["cloudrun-development", "cloud-functions", "cloudbase-platform"] },
   { file: "cloudfunctions", scenario: "cloudrun", skills: ["cloud-functions", "cloudbase-platform"] },
-  { file: "prisma/schema.prisma", scenario: "database", skills: ["data-model-creation", "relational-database-tool", "cloudbase-platform"] },
-  { file: "drizzle.config.ts", scenario: "database", skills: ["data-model-creation", "relational-database-tool", "cloudbase-platform"] },
-  { file: "drizzle.config.js", scenario: "database", skills: ["data-model-creation", "relational-database-tool", "cloudbase-platform"] },
+  { file: "prisma/schema.prisma", scenario: "database", skills: ["data-model-creation", "relational-database-mcp-cloudbase", "cloudbase-platform"] },
+  { file: "drizzle.config.ts", scenario: "database", skills: ["data-model-creation", "relational-database-mcp-cloudbase", "cloudbase-platform"] },
+  { file: "drizzle.config.js", scenario: "database", skills: ["data-model-creation", "relational-database-mcp-cloudbase", "cloudbase-platform"] },
 ];
 
 // package.json dependency markers (for scenario detection)
 var PACKAGE_MARKERS = {
-  react: { scenario: "web", skills: ["web-development", "auth-web", "no-sql-web-sdk", "cloudbase-platform"] },
-  vue: { scenario: "web", skills: ["web-development", "auth-web", "no-sql-web-sdk", "cloudbase-platform"] },
+  react: { scenario: "web", skills: ["web-development", "auth-web-cloudbase", "cloudbase-document-database-web-sdk", "cloudbase-platform"] },
+  vue: { scenario: "web", skills: ["web-development", "auth-web-cloudbase", "cloudbase-document-database-web-sdk", "cloudbase-platform"] },
   vite: { scenario: "web", skills: ["web-development", "cloudbase-platform"] },
-  next: { scenario: "web", skills: ["web-development", "auth-web", "no-sql-web-sdk", "cloudbase-platform"] },
-  "@cloudbase/js-sdk": { scenario: "web", skills: ["web-development", "auth-web", "no-sql-web-sdk", "cloud-storage-web", "cloudbase-platform"] },
-  "@cloudbase/node-sdk": { scenario: "cloudrun", skills: ["cloudrun-development", "cloud-functions", "auth-nodejs", "cloudbase-platform"] },
+  next: { scenario: "web", skills: ["web-development", "auth-web-cloudbase", "cloudbase-document-database-web-sdk", "cloudbase-platform"] },
+  "@cloudbase/js-sdk": { scenario: "web", skills: ["web-development", "auth-web-cloudbase", "cloudbase-document-database-web-sdk", "cloud-storage-web", "cloudbase-platform"] },
+  "@cloudbase/node-sdk": { scenario: "cloudrun", skills: ["cloudrun-development", "cloud-functions", "auth-nodejs-cloudbase", "cloudbase-platform"] },
   "@cloudbase/manager-node": { scenario: "web", skills: ["cloudbase-cli", "cloudbase-platform"] },
   "@cloudbase/cloudbase-mcp": { scenario: "web", skills: ["cloudbase-platform"] },
-  "wx-server-sdk": { scenario: "miniprogram", skills: ["cloud-functions", "auth-wechat", "no-sql-wx-mp-sdk", "cloudbase-platform"] },
-  "@cloudbase/wx-cloud-sdk": { scenario: "miniprogram", skills: ["miniprogram-development", "auth-wechat", "no-sql-wx-mp-sdk", "cloudbase-platform"] },
+  "wx-server-sdk": { scenario: "miniprogram", skills: ["cloud-functions", "auth-wechat-miniprogram", "cloudbase-document-database-in-wechat-miniprogram", "cloudbase-platform"] },
+  "@cloudbase/wx-cloud-sdk": { scenario: "miniprogram", skills: ["miniprogram-development", "auth-wechat-miniprogram", "cloudbase-document-database-in-wechat-miniprogram", "cloudbase-platform"] },
 };
 
 function readPackageJson(projectRoot) {
@@ -129,7 +129,7 @@ function main() {
 
   // Detect scenario
   const { scenario, skills } = isGreenfield
-    ? { scenario: "greenfield", skills: ["cloudbase-guidelines", "web-development", "cloudbase-platform"] }
+    ? { scenario: "greenfield", skills: ["cloudbase", "web-development", "cloudbase-platform"] }
     : detectScenario(projectRoot);
 
   // Profile bootstrap signals
