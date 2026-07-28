@@ -22,5 +22,6 @@
     "authentication",
     "storage",
     "cloudrun"
-  ]
+  ],
+  "logo": "./assets/logo.png"
 }
