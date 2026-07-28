@@ -349,8 +349,9 @@ Creating the function does not automatically create a browser-facing path. Add g
 ```javascript
 manageGateway({
   action: "createRoute",
+  targetType: "function",
   targetName: "myHttpFunction",
-  upstreamResourceType: "WEB_SCF",
+  type: "HTTP",
   path: "/api/hello"
 });
 ```
