@@ -1,7 +1,7 @@
 ---
 name: cloud-functions
 description: CloudBase function runtime guide for building, deploying, and debugging your own Event Functions or HTTP Functions. This skill should be used when users need application runtime code on CloudBase, not when they are merely calling CloudBase official platform APIs.
-version: 2.24.1
+version: 2.25.0
 alwaysApply: false
 ---
 
@@ -332,7 +332,7 @@ If these are unavailable, read `./references/operations-and-config.md` before an
 ### Gateway exposure
 
 - `queryGateway(action="getRoute")` / `listRoutes` / `listCustomDomains`
-- `manageGateway(action="createRoute")` — for HTTP functions pass `type="HTTP"` (maps to `WEB_SCF`); for Event functions pass `type="Event"` (maps to `SCF`). Omit `domain` to use the environment default (`IsDefault`)
+- `manageGateway(action="createRoute")` — for HTTP functions pass `upstreamResourceType="WEB_SCF"`; for Event functions pass `upstreamResourceType="SCF"`. Omit `domain` to use the environment default (`IsDefault`)
 - `manageGateway(action="updateRoute")` / `deleteRoute` / `bindCustomDomain` / `deleteCustomDomain`
 - Do **not** call deprecated GWAPI actions via `callCloudApi` (`CreateCloudBaseGWAPI`, etc.)
 
