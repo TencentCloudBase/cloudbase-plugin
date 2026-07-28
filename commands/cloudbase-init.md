@@ -1,5 +1,6 @@
 ---
-description: "初始化 CloudBase 项目。下载模板、配置环境、生成 cloudbaserc.json。适合新项目。"
+name: cloudbase-init
+description: "Initialize a CloudBase project. Download a template, configure the environment, and generate cloudbaserc.json. Best for new projects."
 ---
 
 # 初始化 CloudBase 项目
