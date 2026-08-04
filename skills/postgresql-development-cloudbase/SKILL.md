@@ -88,6 +88,8 @@ CloudBase PG (`app.rdb()`, `app.storage.from('bucket')`) uses **different API me
    5. Verify: `managePgDatabase(action=listMigrations)` and confirm the remote history records the same `migrationVersion`.
    6. Then write frontend CRUD / RLS checks.
 
+   **Out-of-order / backfill versions:** Prefer a `migrationVersion` strictly newer than `LatestVersion`. If you must apply a version older than Latest (branch merge / cherry-pick), pass `includeAll=true` on `planMigration` / `applyMigration` — same as CLI `tcb db pg migration up --include-all`. Do not use this for routine work.
+
    **If applyMigration returns `MIGRATION_TASK_TIMEOUT` or `MIGRATION_TASK_PENDING`:** the task may still be running (large DDL / lock waits). Call `describeMigrationTask(taskId=...)` **first** for Status/Phase/Reason, then `listMigrations`. Do **not** re-push the same `migrationVersion`, and do **not** fall back to `execute` until the task is terminal and list confirms the version never landed.
 
    Other migration actions:

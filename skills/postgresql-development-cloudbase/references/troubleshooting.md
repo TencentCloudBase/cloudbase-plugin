@@ -47,6 +47,16 @@ Fix:
 2. If local files already exist but are wrong, re-run with `force=true` to overwrite from remote — do **not** hand-edit an already-applied version and re-push the same `migrationVersion`.
 3. For new schema changes after fetch, always create a **new** `migrationVersion` newer than `LatestVersion`.
 
+## `MIGRATION_NOT_EXECUTABLE` / `local_migration_before_latest_remote`
+
+Cause: pending `migrationVersion` is older than remote `LatestVersion` (out-of-order), or checksum mismatch / other Preview Conflicts. Push is blocked.
+
+Fix:
+
+1. Default: pick a new 14-digit version strictly greater than `LatestVersion` from `listMigrations`.
+2. Only when you intentionally need out-of-order apply (branch merge / backfill): retry `planMigration` / `applyMigration` with `includeAll=true` (CLI `tcb db pg migration up --include-all`).
+3. For `checksum_mismatch`, fetch/realign local SQL — do not force includeAll.
+
 ## Permissions pass in MCP but fail in browser
 
 Likely cause: admin/default execution bypassed user-facing role checks.
