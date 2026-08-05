@@ -5,7 +5,7 @@ Use CloudBase guidance only when the current repo, prompt, or tool call makes it
 ## Core principles
 
 - **MCP-first**: Prefer CloudBase MCP tools (`envQuery`, `manageFunctions`, `manageHosting`) over CLI or memorized APIs.
-- **Skills on demand**: The full catalog stays in `skills/`; hooks load topic-sized chunks via prompt analysis — fetch via `searchKnowledgeBase(mode=skill, skillName="<name>")`.
+- **Skills on demand**: The full catalog stays in `skills/` beside this plugin. Hooks load topic-sized chunks via prompt analysis. Prefer local skill files under `skills/<name>/SKILL.md`. Use `searchKnowledgeBase(mode=skill, skillName="<name>")` only as a CloudBase docs/knowledge lookup — never HTTP-fetch remote skill markdown into the agent context.
 - **Verify, don't trust memory**: CloudBase APIs change frequently. Always check current docs via `searchKnowledgeBase` before implementing.
 
 ## Scenario routing
