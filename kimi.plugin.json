@@ -1,0 +1,44 @@
+{
+  "$schema": "https://kimi.com/schemas/kimi.plugin.schema.json",
+  "name": "cloudbase",
+  "version": "0.2.0",
+  "description": "Tencent CloudBase — AI models, authentication, NoSQL/PostgreSQL databases, cloud functions, cloud storage, CloudRun backend services, and WeChat Mini Program integration. Powered by cloudbase-mcp.",
+  "keywords": [
+    "cloudbase",
+    "tencent-cloud",
+    "baas",
+    "kimi-code",
+    "database",
+    "cloud-function",
+    "storage",
+    "cloudrun",
+    "auth",
+    "hosting"
+  ],
+  "author": "Tencent CloudBase",
+  "homepage": "https://github.com/TencentCloudBase/CloudBase-AI-Toolkit",
+  "license": "MIT",
+  "interface": {
+    "displayName": "Tencent CloudBase",
+    "shortDescription": "Build, deploy, and manage CloudBase apps",
+    "longDescription": "CloudBase 官方 Kimi 插件。提供 cloudbase-mcp 工具调用与 routing skill，让你从 Kimi 直接开发、部署、运维 CloudBase 应用。\n\nTry with prompts like:\n- CloudBase 帮我搭一个带用户登录、数据库和管理后台的 Web 应用并部署\n- CloudBase 列出环境里所有 CloudRun 服务和最近 1 小时云函数报错\n- CloudBase 用 CloudBase PG 建一张用户表并启用 RLS 安全规则",
+    "developerName": "Tencent CloudBase",
+    "websiteURL": "https://cloudbase.net",
+    "iconUrl": "https://raw.githubusercontent.com/TencentCloudBase/CloudBase-AI-Toolkit/main/plugin/cloudbase/assets/logo.png"
+  },
+  "skills": "./skills/cloudbase/",
+  "sessionStart": {
+    "skill": "cloudbase"
+  },
+  "skillInstructions": "Log in via the plugin's MCP `auth` tool (device-code flow) — no long-lived API keys are accepted. Prefer this plugin's MCP tools for all CloudBase operations. Domain knowledge is fetched on demand via the routing skill (searchKnowledgeBase mode=skill).",
+  "mcpServers": {
+    "cloudbase": {
+      "command": "npx",
+      "args": ["-y", "@cloudbase/cloudbase-mcp@2.28.0"],
+      "env": {
+        "INTEGRATION_IDE": "Kimi"
+      }
+    }
+  },
+  "hooks": []
+}
