@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-09-12T14:34:30.054Z",
+  "generatedAt": "2026-09-13T08:28:13.451Z",
   "skills": {
     "ai-model-nodejs": {
       "name": "ai-model-nodejs",
@@ -508,7 +508,7 @@
     },
     "cloud-api-operations": {
       "name": "cloud-api-operations",
-      "description": "Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF, etc.) via cloud APIs when no dedicated MCP tool exists. Covers API discovery via the api-reference index, calling via MCP callCloudApi or official SDKs, credential/permission models with CAM authorization escalation, and battle-tested workflow recipes. Use when the task requires Tencent Cloud control-plane operations beyond CloudBase's own tooling.",
+      "description": "Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF) via cloud APIs when no dedicated MCP tool covers the task. Use when a task needs control-plane operations beyond CloudBase's own tooling, or when a callCloudApi call failed and needs classifying.",
       "version": "2.33.2",
       "metadata": {
         "priority": 6
