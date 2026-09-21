@@ -22,9 +22,10 @@ npx plugins add TencentCloudBase/cloudbase-plugin -y --scope user
 npx plugins add https://cnb.cool/tencent/cloud/cloudbase/cloudbase-plugin.git -y --scope user
 ```
 
-## Open Plugin Specification
+## Agent Plugins
 
-This plugin conforms to the [Open Plugin Specification v1.0.0](https://open-plugins.com/plugin-builders/specification).
+This plugin conforms to the [Agent Plugins 1.0.0 specification](https://agent-plugins.org/specification)
+(the standard previously published as Open Plugin Spec).
 
 ## License
 
