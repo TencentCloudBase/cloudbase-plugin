@@ -177,4 +177,4 @@ Guidelines: https://docs.qoder.com/zh/qoderwork/skill-marketplace-guidelines
 ## Notes
 
 - Prefer Plugin + MCP over QoderWork **Connector** (Connector needs public HTTPS MCP + OAuth).
-- After listing goes live, update `specs/plugin-marketplace-listing/markets.yaml` (`qoderwork-marketplace` / `qoder-plugin` → `listed`).
+- After listing goes live, record it in the internal marketplace matrix (`qoderwork-marketplace` / `qoder-plugin` → `listed`).
