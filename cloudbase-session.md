@@ -17,13 +17,26 @@ CloudBase has 4 scenarios — the detected scenario should guide your primary ap
 - **CloudRun** (container/Docker) → `cloudrun-development` + `cloud-functions`
 - **Database** (schema design) → `data-model-creation` + `relational-database-mcp-cloudbase` or `postgresql-development-cloudbase`
 
+## Two MCP servers are connected
+
+The plugin wires both a hosted server (`cloudbase-remote`, OAuth over Streamable HTTP) and a local one (`cloudbase-local`, stdio via `npx`). They expose the same tool names, so pick one deliberately instead of mixing calls across them.
+
+Use `cloudbase-remote` by default. Switch to `cloudbase-local` when any one of these applies:
+
+- the account signs in with a CloudBase API key (`CLOUDBASE_API_KEY`) — the hosted endpoint accepts only OAuth or Tencent Cloud SecretId/SecretKey, it has no API-key path
+- the session has to cover both the domestic and the international site — a hosted URL is bound to one site, the local server switches with `TCB_SITE`
+- the task needs a tool the hosted server does not register: `manageStorage` for uploading or downloading local files, `downloadTemplate`, `manageCloudRun`, or the declarative `deployBuild` / `deployPlan` / `deployApply` set
+- `cloudbase-remote` returns `401` and the user cannot finish a browser login
+
+**Deploying functions or apps does not require the local server.** On the hosted one, deploy by two-step upload: `queryFunctions(action="getFunctionUploadUrl")` or `queryApps(action="getUploadUrl")` → `PUT` the zip → `manageFunctions` with the `code` triple or `manageApps(action="deployApp", cosTimestamp=…)`. What the hosted server lacks is the declarative `cloudbaserc` executor and a dry-run before applying.
+
+`cloudbase-remote` has no `auth` tool: the browser OAuth flow (sign in → pick an environment → consent) *is* the login, so do not look for `auth` there and do not ask for API keys. `cloudbase-local` does expose `auth` — use it there.
+
 ## Mandatory first step
 
-When CloudBase MCP tools are available in this session, resolve the session in this order — every management tool fails with `AUTH_REQUIRED` / `ENV_REQUIRED` until steps 1 and 2 are done:
+When CloudBase MCP tools are available in this session, resolve the session in this order — management tools fail with `ENV_REQUIRED` until an environment is bound:
 
-1. `auth({ action: "status" })` — confirm the login; if not logged in, complete `auth({ action: "start_auth" })` first.
-2. `auth({ action: "set_env", envId: "<EnvId>" })` — bind the target environment when none is bound yet.
-3. `queryEnv({ action: "info" })` — then resolve:
+1. `queryEnv({ action: "info" })` on the server you are using — confirm the bound environment, then resolve:
    - `envId` — use in all subsequent config files and code
    - `RuntimeMode` — `"postgresql"` or `"nosql"` (determines database skill routing)
    - `RuntimeModeHints.RecommendedSkills` — backend-recommended skills for this environment

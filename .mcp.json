@@ -1,6 +1,10 @@
 {
   "mcpServers": {
-    "cloudbase-mcp": {
+    "cloudbase-remote": {
+      "type": "http",
+      "url": "https://tcb-api.cloud.tencent.com/mcp/v1"
+    },
+    "cloudbase-local": {
       "command": "npx",
       "args": ["-y", "@cloudbase/cloudbase-mcp@latest"],
       "env": {}

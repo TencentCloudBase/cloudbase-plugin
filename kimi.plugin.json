@@ -30,17 +30,17 @@
   "sessionStart": {
     "skill": "cloudbase"
   },
-  "skillInstructions": "Log in via the plugin's MCP `auth` tool (device-code flow) \u2014 no long-lived API keys are accepted. Prefer this plugin's MCP tools for all CloudBase operations. Domain knowledge is fetched on demand via the routing skill (searchKnowledgeBase mode=skill).",
+  "skillInstructions": "Two MCP servers are connected: `cloudbase-remote` (hosted, sign in through Kimi's MCP OAuth flow via `/mcp-config login`) and `cloudbase-local` (local stdio, use it when the account signs in with a CloudBase API key or the task needs local files). Prefer the remote one by default. Domain knowledge is fetched on demand via the routing skill (searchKnowledgeBase mode=skill).",
   "mcpServers": {
-    "cloudbase": {
+    "cloudbase-remote": {
+      "url": "https://tcb-api.cloud.tencent.com/mcp/v1"
+    },
+    "cloudbase-local": {
       "command": "npx",
       "args": [
         "-y",
         "@cloudbase/cloudbase-mcp@latest"
-      ],
-      "env": {
-        "INTEGRATION_IDE": "Kimi"
-      }
+      ]
     }
   },
   "hooks": []
