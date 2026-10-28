@@ -812,7 +812,12 @@
           "mcp 工具 schema",
           "mcp 站点切换",
           "mcp 国际站地址",
-          "mcp 插件开关"
+          "mcp 插件开关",
+          "mcp 报错",
+          "mcp 工具报错",
+          "mcp 提 issue",
+          "反馈 mcp 问题",
+          "整理 mcp 会话"
         ],
         "allOf": [
           [
@@ -826,6 +831,22 @@
           [
             "mcp",
             "配置"
+          ],
+          [
+            "mcp",
+            "报错"
+          ],
+          [
+            "mcp",
+            "失败"
+          ],
+          [
+            "mcp",
+            "issue"
+          ],
+          [
+            "mcp",
+            "反馈"
           ]
         ],
         "anyOf": [
@@ -847,7 +868,9 @@
           "连接 cloudbase mcp",
           "在命令行调用 mcp 工具",
           "查看 mcp 工具入参",
-          "切换 mcp 站点或区域"
+          "切换 mcp 站点或区域",
+          "整理 mcp 问题反馈",
+          "给 mcp 提 issue"
         ],
         "entities": [
           "@cloudbase/cloudbase-mcp",
@@ -857,7 +880,9 @@
         "examples": [
           "怎么把 cloudbase mcp 接到 cursor",
           "用 mcporter 调一下 queryenv",
-          "mcp 想连国际站怎么配"
+          "mcp 想连国际站怎么配",
+          "mcp 工具报错怎么反馈给你们",
+          "帮我整理这次会话提个 issue"
         ]
       }
     },

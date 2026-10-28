@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "generatedAt": "2026-10-21T12:17:40.256Z",
+  "generatedAt": "2026-10-28T05:10:44.720Z",
   "skills": {
     "ai-model-nodejs": {
       "name": "ai-model-nodejs",
-      "description": "Use this skill for Node.js backend AI via @cloudbase/node-sdk (>=3.16.0) — cloud functions, CloudRun, Express/Koa/NestJS, serverless APIs, scheduled jobs, LLM proxies, agent orchestration. The only SDK supporting image generation (ai.createImageModel + generateImage). Text via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*; model ids (e.g. deepseek-v4-flash, glm-5, kimi-k2.6) go in the `model` field of generateText/streamText. MUST run two-step preflight before code — see body. NOT for browser/Web (use ai-model-web) or Mini Program (use ai-model-wechat).",
+      "description": "Use this skill for Node.js backend AI via @cloudbase/node-sdk (>=3.16.0) — cloud functions, CloudRun, Express/Koa/NestJS, serverless APIs, scheduled jobs, LLM proxies, agent orchestration. The only SDK supporting image generation (ai.createImageModel + generateImage). Text via ai.createModel with groups cloudbase, the legacy hunyuan-v3 / hunyuan-exp, or custom-*; model ids (e.g. deepseek-v4-flash, glm-5, kimi-k2.6) go in the `model` field of generateText/streamText. MUST run two-step preflight before code — see body. NOT for browser/Web (use ai-model-web) or Mini Program (use ai-model-wechat).",
       "version": "2.36.1",
       "metadata": {
         "priority": 5
@@ -91,7 +91,7 @@
     },
     "ai-model-web": {
       "name": "ai-model-web",
-      "description": "Use this skill when a browser/Web app (React, Vue, Next, Nuxt, static sites, SPAs, dashboards, AI chat UI, 页面, 前端, 网页) needs AI models via @cloudbase/js-sdk. Default routing for Web/frontend AI — call directly from the browser, do NOT propose a Node.js proxy. Covers generateText and streamText; models via ai.createModel with groups cloudbase, hunyuan-exp, or custom-*, model id in the `model` field. MUST run two-step preflight before code — see body. NOT for Node.js backend (use ai-model-nodejs), Mini Program (use ai-model-wechat), or image generation (Node SDK only).",
+      "description": "Use this skill when a browser/Web app (React, Vue, Next, Nuxt, static sites, SPAs, dashboards, AI chat UI, 页面, 前端, 网页) needs AI models via @cloudbase/js-sdk. Default routing for Web/frontend AI — call directly from the browser, do NOT propose a Node.js proxy. Covers generateText and streamText; models via ai.createModel with groups cloudbase, the legacy hunyuan-v3 / hunyuan-exp, or custom-*, model id in the `model` field. MUST run two-step preflight before code — see body. NOT for Node.js backend (use ai-model-nodejs), Mini Program (use ai-model-wechat), or image generation (Node SDK only).",
       "version": "2.36.1",
       "metadata": {
         "priority": 5
@@ -167,7 +167,7 @@
     },
     "ai-model-wechat": {
       "name": "ai-model-wechat",
-      "description": "Use this skill for WeChat Mini Program AI via wx.cloud.extend.AI (小程序, wx.cloud apps). Covers generateText and streamText with callbacks (onText, onEvent, onFinish); streamText needs a data wrapper, generateText returns the raw response. Models via wx.cloud.extend.AI.createModel with groups hunyuan-exp (小程序成长计划), cloudbase (main managed), or custom-*; model id goes in the data wrapper `model` field. MUST run two-step preflight before code — see body. NOT for browser/Web (use ai-model-web), Node.js backend (use ai-model-nodejs), or image generation (use ai-model-nodejs).",
+      "description": "Use this skill for WeChat Mini Program AI via wx.cloud.extend.AI (小程序, wx.cloud apps). Covers generateText and streamText with callbacks (onText, onEvent, onFinish); streamText needs a data wrapper, generateText returns the raw response. Models via wx.cloud.extend.AI.createModel with groups cloudbase (main managed, also 小程序成长计划 with `hy3`), the legacy hunyuan-v3 / hunyuan-exp, or custom-*; model id goes in the data wrapper `model` field. MUST run two-step preflight before code — see body. NOT for browser/Web (use ai-model-web), Node.js backend (use ai-model-nodejs), or image generation (use ai-model-nodejs).",
       "version": "2.36.1",
       "metadata": {
         "priority": 5
@@ -508,7 +508,7 @@
     },
     "cloud-api-operations": {
       "name": "cloud-api-operations",
-      "description": "Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF) via cloud APIs when no dedicated MCP tool covers the task. Use when a task needs control-plane operations beyond CloudBase's own tooling, or when a callCloudApi call failed and needs classifying.",
+      "description": "Operate Tencent Cloud control-plane resources (monitoring/alarms, CLB, CAM roles, COS, MySQL, SCF) via cloud APIs when no dedicated MCP tool covers the task. Use when a task needs control-plane operations beyond CloudBase's own tooling, or when a callCloudApi call failed and needs classifying. Also covers enterprise platform integration: wrapping CloudBase MCP into an organization-specific MCP (tool trimming, dangerous-action interception, per-user API Key distribution, audit) — use when the user mentions 企业接入 / 封装 MCP / 企业专属 MCP / 多租户凭证下发 / platform MCP wrapping. See recipes/enterprise-mcp-wrapper.md.",
       "version": "2.36.1",
       "metadata": {
         "priority": 6
@@ -715,7 +715,7 @@
     },
     "cloudbase": {
       "name": "cloudbase",
-      "description": "Use this skill when you develop, design, build, deploy, debug, migrate, or troubleshoot CloudBase (腾讯云开发, 云开发, TCB, 微信云开发) projects — Web, 微信小程序, 小程序, uni-app, mobile (iOS, Android, Flutter, React Native). Covers UI (页面, 界面, 表单, dashboard, prototype, 原型); auth (登录, 注册, OAuth, publishable key); databases (NoSQL 文档数据库, MySQL 关系型数据库, PostgreSQL/CloudBase PG, app.rdb(), queryPgDatabase/managePgDatabase, CRUD, security rules); 云函数/cloud functions (serverless, scf_bootstrap); CloudRun (云托管, Dockerfile); 云存储; built-in AI (内置大模型, AI 对话, streaming, 流式输出, 图片生成, generateText, streamText, createModel, generateImage, TokenHub, Hunyuan, DeepSeek, GLM, Kimi, Token Credits 资源包, 小程序成长计划); third-party/custom model onboarding (第三方大模型接入, 大模型调用, LLM API); AI agent (智能体, AG-UI, LangGraph); ops troubleshooting (巡检, 诊断, 日志); spec workflow (需求文档, 技术方案, requirements, tasks.md). Do NOT use for non-CloudBase projects, pure frontend without CloudBase, or self-hosted backends without CloudBase.",
+      "description": "Use this skill when you develop, design, build, deploy, debug, migrate, or troubleshoot CloudBase (腾讯云开发, 云开发, TCB, 微信云开发) projects — Web, 微信小程序, 小程序, uni-app, mobile (iOS, Android, Flutter, React Native). Covers UI (页面, 界面, 表单, dashboard, prototype, 原型); auth (登录, 注册, OAuth, publishable key); databases (NoSQL 文档数据库, PostgreSQL/CloudBase PG, 已有 MySQL, app.rdb(), queryPgDatabase/managePgDatabase, CRUD, security rules); 云函数/cloud functions (serverless, scf_bootstrap); CloudRun (云托管, Dockerfile); 云存储; built-in AI (内置大模型, AI 对话, streaming, 流式输出, 图片生成, generateText, streamText, createModel, generateImage, TokenHub, Hunyuan, DeepSeek, GLM, Kimi, Token Credits 资源包, 小程序成长计划); third-party/custom model onboarding (第三方大模型接入, 大模型调用, LLM API); AI agent (智能体, AG-UI, LangGraph); ops troubleshooting (巡检, 诊断, 日志); spec workflow (需求文档, 技术方案, requirements, tasks.md). Do NOT use for non-CloudBase projects, pure frontend without CloudBase, or self-hosted backends without CloudBase.",
       "version": "2.36.1",
       "metadata": {
         "priority": 6
@@ -1160,7 +1160,12 @@
           "mcp 工具 schema",
           "mcp 站点切换",
           "mcp 国际站地址",
-          "mcp 插件开关"
+          "mcp 插件开关",
+          "mcp 报错",
+          "mcp 工具报错",
+          "mcp 提 issue",
+          "反馈 mcp 问题",
+          "整理 mcp 会话"
         ],
         "allOf": [
           [
@@ -1174,6 +1179,22 @@
           [
             "mcp",
             "配置"
+          ],
+          [
+            "mcp",
+            "报错"
+          ],
+          [
+            "mcp",
+            "失败"
+          ],
+          [
+            "mcp",
+            "issue"
+          ],
+          [
+            "mcp",
+            "反馈"
           ]
         ],
         "anyOf": [
@@ -1195,7 +1216,9 @@
           "连接 cloudbase mcp",
           "在命令行调用 mcp 工具",
           "查看 mcp 工具入参",
-          "切换 mcp 站点或区域"
+          "切换 mcp 站点或区域",
+          "整理 mcp 问题反馈",
+          "给 mcp 提 issue"
         ],
         "entities": [
           "@cloudbase/cloudbase-mcp",
@@ -1205,7 +1228,9 @@
         "examples": [
           "怎么把 cloudbase mcp 接到 cursor",
           "用 mcporter 调一下 queryenv",
-          "mcp 想连国际站怎么配"
+          "mcp 想连国际站怎么配",
+          "mcp 工具报错怎么反馈给你们",
+          "帮我整理这次会话提个 issue"
         ]
       },
       "pathRegexSources": [],
@@ -1640,7 +1665,7 @@
     },
     "ops-inspector": {
       "name": "ops-inspector",
-      "description": "AIOps-style CloudBase inspection skill (v3). Use when users need health checks, log diagnosis, alarm interpretation (CPU alert normal?, peak QPS), metrics via queryEnv(action=metrics), or fault playbooks for 429 / AI model 429 / function timeout / function 404 / ACCESS_TOKEN_INVALID / zero invocations. Triggers on 巡检, 诊断, 告警, 峰值 QPS, 限频, 调用量为 0, troubleshooting.",
+      "description": "AIOps-style CloudBase inspection skill. Use when users need health checks, log diagnosis, alarm interpretation (CPU alert normal?, peak QPS), metrics via queryEnv(action=metrics), fault playbooks for 429 / AI model 429 / function timeout / function 404 / ACCESS_TOKEN_INVALID / zero invocations, or a scheduled patrol that reports only new or worse findings. Triggers on 巡检, 诊断, 告警, 峰值 QPS, 限频, 调用量为 0, 定时巡检, 每天检查, 值守, troubleshooting.",
       "version": "2.36.1",
       "metadata": {
         "priority": 6

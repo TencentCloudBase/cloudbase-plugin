@@ -15,7 +15,7 @@ CloudBase has 4 scenarios — the detected scenario should guide your primary ap
 - **Web** (React/Vue/Vite) → `web-development` + `auth-web-cloudbase` + `cloudbase-document-database-web-sdk` + `cloud-storage-web`
 - **Mini Program** (WeChat) → `miniprogram-development` + `auth-wechat-miniprogram` + `cloudbase-document-database-in-wechat-miniprogram`
 - **CloudRun** (container/Docker) → `cloudrun-development` + `cloud-functions`
-- **Database** (schema design) → `data-model-creation` + `relational-database-mcp-cloudbase` or `postgresql-development-cloudbase`
+- **Database** (schema design) → `postgresql-development-cloudbase`, or `relational-database-mcp-cloudbase` for existing MySQL
 
 ## Two MCP servers are connected
 

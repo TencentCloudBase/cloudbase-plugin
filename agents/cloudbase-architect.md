@@ -206,7 +206,7 @@ Client（WebSocket / HTTP）
 - `⤳ skill: web-development` — Web 前端工程化、静态托管、Web SDK
 - `⤳ skill: miniprogram-development` — 小程序项目结构、云开发 API、开发者工具
 - `⤳ skill: cloudrun-development` — CloudRun 服务、容器化、长连接
-- `⤳ skill: data-model-creation` — 数据建模、ER 图、数据库选型
+- `⤳ skill: postgresql-development-cloudbase` — 数据建模、ER 图、数据库选型
 - `⤳ skill: relational-database-tool` — MySQL/PostgreSQL 设计与管理
 - `⤳ skill: auth-web` / `auth-wechat-miniprogram` / `auth-nodejs-cloudbase` — 各端认证实现
 

@@ -20,9 +20,9 @@ var FILE_MARKERS = [
   { file: "cloudbaserc.json", scenario: "web", skills: ["web-development", "cloudbase-platform"] },
   { file: "Dockerfile", scenario: "cloudrun", skills: ["cloudrun-development", "cloud-functions", "cloudbase-platform"] },
   { file: "cloudfunctions", scenario: "cloudrun", skills: ["cloud-functions", "cloudbase-platform"] },
-  { file: "prisma/schema.prisma", scenario: "database", skills: ["data-model-creation", "relational-database-mcp-cloudbase", "cloudbase-platform"] },
-  { file: "drizzle.config.ts", scenario: "database", skills: ["data-model-creation", "relational-database-mcp-cloudbase", "cloudbase-platform"] },
-  { file: "drizzle.config.js", scenario: "database", skills: ["data-model-creation", "relational-database-mcp-cloudbase", "cloudbase-platform"] },
+  { file: "prisma/schema.prisma", scenario: "database", skills: ["postgresql-development-cloudbase", "relational-database-mcp-cloudbase", "cloudbase-platform"] },
+  { file: "drizzle.config.ts", scenario: "database", skills: ["postgresql-development-cloudbase", "relational-database-mcp-cloudbase", "cloudbase-platform"] },
+  { file: "drizzle.config.js", scenario: "database", skills: ["postgresql-development-cloudbase", "relational-database-mcp-cloudbase", "cloudbase-platform"] },
 ];
 
 // package.json dependency markers (for scenario detection)
